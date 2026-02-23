@@ -34,7 +34,7 @@
 
         public void PrintWin()
         {
-            Console.WriteLine("Вы угадали слово, поздравляю вас! Победа!");
+            Console.WriteLine("Вы угадали слово! Победа!");
             Console.ResetColor();
         }
 
