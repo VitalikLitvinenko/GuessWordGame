@@ -2,21 +2,23 @@
 {
     public class ConsoleUI
     {
+        public void Clear()
+        {
+            Console.Clear();
+        }
+
         public void PrintMask(string mask)
         {
             Console.WriteLine("Слово: " + string.Join(" ", mask.ToCharArray()));
             Console.WriteLine();
         }
 
-        public void PrintUsedLetters(List<char> guessed, List<char> failed)
+        public void PrintUsedLetters(List<char> entered, List<char> guessed)
         {
             Console.Write("Использованные буквы: ");
-            foreach (var c in guessed)
+            foreach (var c in entered)
             {
-                Console.Write(c + " ");
-            }
-            foreach (var c in failed)
-            {
+                Console.ForegroundColor = guessed.Contains(c) ? ConsoleColor.Green : ConsoleColor.Red;
                 Console.Write(c + " ");
             }
             Console.ResetColor();
@@ -26,6 +28,7 @@
         public void PrintAttemptsLeft(int attemptsLeft, int maxAttempts)
         {
             Console.Write("Попытки: ");
+            Console.ForegroundColor = attemptsLeft <= 1 ? ConsoleColor.Red : ConsoleColor.Yellow;
             Console.Write(attemptsLeft);
             Console.ResetColor();
             Console.WriteLine($" / {maxAttempts}");
@@ -34,12 +37,20 @@
 
         public void PrintWin()
         {
-            Console.WriteLine("Вы угадали слово, поздравляю вас! Победа!");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Вы угадали слово! Победа!");
             Console.ResetColor();
+        }
+
+        public void PrintStatistics(Statistics stats)
+        {
+            Console.WriteLine(stats.GetSummary());
+            Console.WriteLine();
         }
 
         public void PrintLoss(string word)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Вы проиграли! Загаданное слово: {word}");
             Console.ResetColor();
         }
@@ -86,6 +97,7 @@
 
         public void PrintAlreadyUsed(char letter)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Буква '{letter}' уже была введена, попробуйте другую.");
             Console.ResetColor();
         }
@@ -122,6 +134,7 @@
 
         private void PrintInvalidInput(string message)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(message);
             Console.ResetColor();
         }

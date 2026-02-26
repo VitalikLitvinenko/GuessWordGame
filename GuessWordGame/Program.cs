@@ -11,37 +11,36 @@
                 new Difficulty("Сложный", 4, 6, int.MaxValue),
             };
 
-            var wordBank = new WordBank();
-            var ui       = new ConsoleUI();
+            var wordBank   = new WordBank();
+            var ui         = new ConsoleUI();
+            var statistics = new Statistics();
 
             var playAgain = true;
             while (playAgain)
             {
                 var difficulty = ui.ChooseDifficulty(difficulties);
+                var game       = new Game(difficulty, wordBank);
 
-                var word           = wordBank.GenerateWord(difficulty);
-                var guessedLetters = new List<char>();
-                var failedLetters  = new List<char>();
-                var maxAttempts    = difficulty.MaxAttempts;
-                var attemptsLeft   = maxAttempts;
-
-                Console.Clear();
+                ui.Clear();
 
                 while (true)
                 {
-                    ui.PrintMask(word.GetMask(guessedLetters));
-                    ui.PrintUsedLetters(guessedLetters, failedLetters);
-                    ui.PrintAttemptsLeft(attemptsLeft, maxAttempts);
+                    ui.PrintMask(game.CurrentWord.GetMask(game.GuessedLetters));
+                    ui.PrintUsedLetters(game.EnteredLetters, game.GuessedLetters);
+                    ui.PrintAttemptsLeft(game.AttemptsLeft, game.MaxAttempts);
+                    ui.PrintStatistics(statistics);
 
-                    if (!word.GetMask(guessedLetters).Contains('_'))
+                    if (game.IsWon())
                     {
+                        statistics.RegisterWin(game.SelectedDifficulty, game.AttemptsLeft);
                         ui.PrintWin();
                         break;
                     }
 
-                    if (attemptsLeft <= 0)
+                    if (game.IsLost())
                     {
-                        ui.PrintLoss(word.Value);
+                        statistics.RegisterLoss();
+                        ui.PrintLoss(game.CurrentWord.Value);
                         break;
                     }
 
@@ -49,45 +48,31 @@
 
                     if (input == "!сложность")
                     {
-                        difficulty     = ui.ChooseDifficulty(difficulties);
-                        word           = wordBank.GenerateWord(difficulty);
-                        guessedLetters = new List<char>();
-                        failedLetters  = new List<char>();
-                        maxAttempts    = difficulty.MaxAttempts;
-                        attemptsLeft   = maxAttempts;
-                        Console.Clear();
+                        var newDifficulty = ui.ChooseDifficulty(difficulties);
+                        game.ChangeDifficulty(newDifficulty);
+                        ui.Clear();
                         continue;
                     }
 
                     if (input == "!слово")
                     {
-                        word           = wordBank.GenerateWord(difficulty);
-                        guessedLetters = new List<char>();
-                        failedLetters  = new List<char>();
-                        attemptsLeft   = maxAttempts;
-                        Console.Clear();
+                        game.ChangeWord();
+                        ui.Clear();
                         continue;
                     }
 
                     var letter = input[0];
 
-                    if (guessedLetters.Contains(letter) || failedLetters.Contains(letter))
+                    if (game.IsLetterAlreadyUsed(letter))
                     {
                         ui.PrintAlreadyUsed(letter);
                         Console.ReadKey(true);
-                        Console.Clear();
+                        ui.Clear();
                         continue;
                     }
 
-                    if (word.ContainsLetter(letter))
-                        guessedLetters.Add(letter);
-                    else
-                    {
-                        failedLetters.Add(letter);
-                        attemptsLeft--;
-                    }
-
-                    Console.Clear();
+                    game.EnterLetter(letter);
+                    ui.Clear();
                 }
 
                 playAgain = ui.AskPlayAgain();
