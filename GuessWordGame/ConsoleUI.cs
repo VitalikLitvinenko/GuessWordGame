@@ -13,7 +13,7 @@
             Console.WriteLine();
         }
 
-        public void PrintUsedLetters(List<char> entered, List<char> guessed)
+        public void PrintUsedLetters(IEnumerable<char> entered, IEnumerable<char> guessed)
         {
             Console.Write("Использованные буквы: ");
             foreach (var c in entered)
@@ -67,6 +67,11 @@
             }
 
             return answer == "да" || answer == "д";
+        }
+
+        public void PrintGoodbye()
+        {
+            Console.WriteLine("Спасибо за игру!");
         }
 
         public Difficulty ChooseDifficulty(List<Difficulty> difficulties)

@@ -5,7 +5,6 @@ namespace GuessWordGame
         public int CurrentScore { get; private set; }
         public int BestScore { get; private set; }
 
-        // Dictionary: ключ — название сложности, значение — количество побед
         private Dictionary<string, int> _winsByDifficulty = new Dictionary<string, int>();
 
         public void RegisterWin(Difficulty difficulty, int attemptsLeft)

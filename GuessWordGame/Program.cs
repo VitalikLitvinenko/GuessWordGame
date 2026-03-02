@@ -77,6 +77,8 @@
 
                 playAgain = ui.AskPlayAgain();
             }
+
+            ui.PrintGoodbye();
         }
     }
 }

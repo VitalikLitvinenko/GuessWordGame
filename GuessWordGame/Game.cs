@@ -6,8 +6,8 @@ namespace GuessWordGame
         public int MaxAttempts { get; private set; }
         public Difficulty SelectedDifficulty { get; private set; }
         public Word CurrentWord { get; private set; }
-        public List<char> EnteredLetters { get; private set; }
-        public List<char> GuessedLetters { get; private set; }
+        public HashSet<char> EnteredLetters { get; private set; }
+        public HashSet<char> GuessedLetters { get; private set; }
 
         private WordBank _wordBank;
 
@@ -23,8 +23,8 @@ namespace GuessWordGame
             CurrentWord    = _wordBank.GenerateWord(SelectedDifficulty);
             MaxAttempts    = SelectedDifficulty.MaxAttempts;
             AttemptsLeft   = MaxAttempts;
-            EnteredLetters = new List<char>();
-            GuessedLetters = new List<char>();
+            EnteredLetters = new HashSet<char>();
+            GuessedLetters = new HashSet<char>();
         }
 
         public void EnterLetter(char letter)
