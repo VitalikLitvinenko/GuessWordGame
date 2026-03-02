@@ -11,7 +11,7 @@
             Length = value.Length;
         }
 
-        public string GetMask(List<char> guessedLetters)
+        public string GetMask(IEnumerable<char> guessedLetters)
         {
             var mask = string.Empty;
 
