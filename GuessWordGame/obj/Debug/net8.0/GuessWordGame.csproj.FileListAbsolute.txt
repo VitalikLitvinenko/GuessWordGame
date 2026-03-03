@@ -1,0 +1,15 @@
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\bin\Debug\net8.0\GuessWordGame.exe
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\bin\Debug\net8.0\GuessWordGame.deps.json
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\bin\Debug\net8.0\GuessWordGame.runtimeconfig.json
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\bin\Debug\net8.0\GuessWordGame.dll
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\bin\Debug\net8.0\GuessWordGame.pdb
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\GuessWordGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\GuessWordGame.AssemblyInfoInputs.cache
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\GuessWordGame.AssemblyInfo.cs
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\GuessWordGame.csproj.CoreCompileInputs.cache
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\GuessWordGame.sourcelink.json
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\GuessWordGame.dll
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\refint\GuessWordGame.dll
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\GuessWordGame.pdb
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\GuessWordGame.genruntimeconfig.cache
+C:\Users\Vitalik\GuessWordGame\GuessWordGame\obj\Debug\net8.0\ref\GuessWordGame.dll
